@@ -1,5 +1,7 @@
+// classname library
 import className from "classnames";
 
+// tailwind merge package
 import { twMerge } from "tailwind-merge";
 
 const Button = ({
@@ -14,7 +16,7 @@ const Button = ({
 }) => {
   // applying conditional tailwind classes using classnames library
   const classes = twMerge(
-    className("px-3 py-1.5 border", {
+    className("flex items-center gap-2 px-3 py-1.5 border", {
       "border-blue-500 bg-blue-500 text-white": primary,
       "border-gray-900 bg-gray-900 text-white": secondary,
       "border-green-500 bg-green-500 text-white": success,
