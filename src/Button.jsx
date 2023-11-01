@@ -13,6 +13,7 @@ const Button = ({
   danger,
   outline,
   rounded,
+  ...rest
 }) => {
   // applying conditional tailwind classes using classnames library
   const classes = twMerge(
@@ -32,7 +33,12 @@ const Button = ({
     })
   );
 
-  return <button className={classes}>{children}</button>;
+  return (
+    // passing rest to the button element allows me to automatically pass future event handlers without addressing each possible case
+    <button {...rest} className={classes}>
+      {children}
+    </button>
+  );
 };
 
 // check props using propTypes library
