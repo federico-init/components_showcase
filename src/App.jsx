@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
       <div>
-        <Button success rounded outline>
+        <Button success rounded outline className="mb-1">
           Click me!
         </Button>
       </div>
