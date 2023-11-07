@@ -11,12 +11,15 @@ const Accordion = ({ items }) => {
     const isExpanded = index === expandedIndex;
 
     const chevronIcon = (
-      <span>{isExpanded ? <GoChevronDown /> : <GoChevronRight />}</span>
+      <span className="text-2xl">
+        {isExpanded ? <GoChevronDown /> : <GoChevronRight />}
+      </span>
     );
 
     return (
       <div key={item.id}>
         <div
+          className="flex justify-between p-3 bg-gray-50 border-b items-center cursor-pointer"
           onClick={
             isExpanded
               ? () => setExpandedIndex(null)
@@ -27,12 +30,12 @@ const Accordion = ({ items }) => {
           {chevronIcon}
         </div>
 
-        {isExpanded && <div>{item.content}</div>}
+        {isExpanded && <div className="border-b p-5">{item.content}</div>}
       </div>
     );
   });
 
-  return <div>{renderedItems}</div>;
+  return <div className="border-x border-t rounded">{renderedItems}</div>;
 };
 
 export default Accordion;
