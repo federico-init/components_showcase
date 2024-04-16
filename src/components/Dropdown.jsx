@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import Panel from "./Panel";
 
@@ -8,7 +8,25 @@ const Dropdown = ({ options, value, onChange }) => {
   // defines if dropdown is open
   const [isOpen, setIsOpen] = useState(false);
 
-  // as user clicks an option the dropdown closes and selectedOption state gets updated
+  const divEl = useRef();
+
+  useEffect(() => {
+    // if divEl is not yet defined, return
+    if (!divEl.current) return;
+
+    const handler = (event) => {
+      if (!divEl.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("click", handler, true);
+
+    return () => {
+      document.removeEventListener("click", handler);
+    };
+  }, []);
+
   const handleOptionClick = (option) => {
     setIsOpen(false);
     onChange(option);
@@ -25,7 +43,7 @@ const Dropdown = ({ options, value, onChange }) => {
   ));
 
   return (
-    <div className="w-48 relative">
+    <div ref={divEl} className="w-48 relative">
       <Panel
         className="flex justify-between items-center cursor-pointer"
         onClick={() => {
