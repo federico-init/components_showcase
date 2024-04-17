@@ -22,6 +22,7 @@ const Dropdown = ({ options, value, onChange }) => {
 
     document.addEventListener("click", handler, true);
 
+    // cleanup event listener on component unmount
     return () => {
       document.removeEventListener("click", handler);
     };
