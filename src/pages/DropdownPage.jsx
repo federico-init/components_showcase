@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 // components
-import Dropdown from "./components/Dropdown";
+import Dropdown from "../components/Dropdown";
 
 const DropdownPage = () => {
   // contains selected dropdown option
