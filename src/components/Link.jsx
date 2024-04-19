@@ -1,13 +1,19 @@
-const Link = ({ to }) => {
+import { useContext } from "react";
+
+import NavigationContext from "../context/navigation";
+
+const Link = ({ to, children }) => {
+  const { navigate } = useContext(NavigationContext);
+
   const handleClick = (event) => {
     event.preventDefault();
 
-    console.log("User navigating to: ", to);
+    navigate(to);
   };
 
   return (
     <a onClick={handleClick} href="to">
-      Click me!
+      {children}
     </a>
   );
 };
