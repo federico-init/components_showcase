@@ -5,7 +5,7 @@ import classNames from "classnames";
 const Link = ({ to, children }) => {
   const { navigate } = useNavigation();
 
-  const classes = classNames("text-blue-500");
+  const classes = classNames("text-blue-500", "mb-3");
 
   const handleClick = (event) => {
     if (event.metaKey || event.ctrlKey) {
