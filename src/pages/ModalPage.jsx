@@ -14,12 +14,25 @@ const ModalPage = () => {
     setShowModal(false);
   };
 
+  // action bar is a prop that can be passed to the Modal component
+  const actionBar = (
+    <Button onClick={handleClose} primary>
+      I Accept
+    </Button>
+  );
+
+  const modalComponent = (
+    <Modal onClose={handleClose} actionBar={actionBar}>
+      <p>Important agreement for user to accept.</p>
+    </Modal>
+  );
+
   return (
     <div>
       <Button onClick={handleClick} primary>
         Open Modal
       </Button>
-      {showModal && <Modal onClose={handleClose} />}
+      {showModal && modalComponent}
     </div>
   );
 };
