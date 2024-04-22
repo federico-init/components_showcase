@@ -1,7 +1,7 @@
 import Table from "../components/Table";
 
 const TablePage = () => {
-  // data to be displayed in the table
+  // data to be displayed in the table (# table rows)
   const data = [
     { name: "Orange", color: "bg-orange-500", score: 5 },
     { name: "Apple", color: "bg-red-500", score: 3 },
@@ -9,9 +9,9 @@ const TablePage = () => {
     { name: "Lime", color: "bg-green-500", score: 4 },
   ];
 
-  // configuration of how the data should be displayed
+  // configuration of how the data should be displayed (# table columns)
   const config = [
-    { label: "Fruits", render: (fruit) => fruit.name },
+    { label: "Name", render: (fruit) => fruit.name },
     {
       label: "Color",
       render: (fruit) => <div className={`p-3 m-2 ${fruit.color}`}></div>,
@@ -23,9 +23,13 @@ const TablePage = () => {
     },
   ];
 
+  const keyFn = (fruit) => {
+    return fruit.name;
+  };
+
   return (
     <div>
-      <Table data={data} config={config} />
+      <Table data={data} config={config} keyFn={keyFn} />
     </div>
   );
 };

@@ -1,18 +1,21 @@
-const Table = ({ data, config }) => {
+const Table = ({ data, config, keyFn }) => {
   // Render the table headers
   const renderedHeaders = config.map((column) => {
     return <th key={column.label}>{column.label}</th>;
   });
 
-  // Render the table rows
-  const renderedRows = data.map((fruit) => {
-    return (
-      <tr className="border-b" key={fruit.name}>
-        <td className="p-3">{fruit.name}</td>
-        <td className="p-3">
-          <div className={`p-3 m-2 ${fruit.color}`}></div>
+  // Render the table rows and cells mapping over the data and config arrays
+  const renderedRows = data.map((rowData) => {
+    const renderedCells = config.map((column) => {
+      return (
+        <td key={column.label} className="p-3">
+          {column.render(rowData)}
         </td>
-        <td className="p-3">{fruit.score}</td>
+      );
+    });
+    return (
+      <tr className="border-b" key={keyFn(rowData.name)}>
+        {renderedCells}
       </tr>
     );
   });
