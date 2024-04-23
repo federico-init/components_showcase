@@ -23,6 +23,7 @@ const TablePage = () => {
     },
   ];
 
+  // function to generate unique keys for each row
   const keyFn = (fruit) => {
     return fruit.name;
   };

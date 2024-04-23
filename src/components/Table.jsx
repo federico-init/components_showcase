@@ -14,7 +14,7 @@ const Table = ({ data, config, keyFn }) => {
       );
     });
     return (
-      <tr className="border-b" key={keyFn(rowData.name)}>
+      <tr className="border-b" key={keyFn(rowData)}>
         {renderedCells}
       </tr>
     );
